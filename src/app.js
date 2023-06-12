@@ -1,4 +1,3 @@
-require("../DbConnection/dbConnection");
 const express = require("express");
 const { Configuration, OpenAIApi } = require("openai");
 const cors = require("cors");
