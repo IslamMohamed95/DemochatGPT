@@ -23,7 +23,7 @@ app.post("/test", async (req, res) => {
       max_tokens: 70,
     });
 
-    res.status(200).send("Hello");
+    res.status(200).send(response.data.choices[0].text);
   } catch (e) {
     res.status(500).send({
       API: false,
