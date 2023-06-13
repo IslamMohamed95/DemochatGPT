@@ -2,21 +2,16 @@ require("dotenv").config();
 const express = require("express");
 const { Configuration, OpenAIApi } = require("openai");
 const cors = require("cors");
-const API = process.env.APIKey;
-const app = express();
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(
-  cors({
-    origin: "*",
-  })
-);
 
 const config = new Configuration({
-  apiKey: API,
+  apiKey: process.env.APIKey,
 });
 const openai = new OpenAIApi(config);
+
+const app = express();
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.post("/test", async (req, res) => {
   try {
@@ -25,7 +20,7 @@ app.post("/test", async (req, res) => {
       model: "text-curie-001",
       prompt: `${prompt}`,
       temperature: 0,
-      max_tokens: 70,
+      max_tokens: 500,
     });
 
     res.status(200).send(response.data.choices[0].text);
