@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 const config = new Configuration({
-  apiKey: "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",
+  apiKey: "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",
 });
 const openai = new OpenAIApi(config);
 
@@ -23,7 +23,7 @@ app.post("/test", async (req, res) => {
       max_tokens: 70,
     });
 
-    res.status(200).send(response.data.choices[0].text);
+    res.status(200).send("Hello");
   } catch (e) {
     res.status(500).send({
       API: false,
