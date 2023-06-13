@@ -32,4 +32,10 @@ app.post("/test", async (req, res) => {
   }
 });
 
+app.get("*", (req, res) => {
+  res.status(404).send({
+    API: false,
+    message: "Invalid Link !..",
+  });
+});
 module.exports = app;
